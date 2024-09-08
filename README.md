@@ -1,4 +1,4 @@
-# SHTI
+# S.H. Takehome Interview
 Fires Htlaeh Emohekat Weivretni
 
 ## Setup Instructions
