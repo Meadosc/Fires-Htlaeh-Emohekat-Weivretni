@@ -101,8 +101,8 @@ I took several shortcuts and made several assumptions in order to finish the pro
 
 This code is not production ready. There is no error handling, no way to recover if a single piece of data is malformed, and no type checking, cleaning, or sanity checks. It also specifically designed for New York, and would need to be rebuilt from almost the ground up to accommodate any other state. The next steps for this code would be to generalize it to any state and add handling for errors and bad data. It would also be nice to have some indication of the code's progress through the file, but that might take many forms depending on the platform it runs on.
 
-I wrote several iterations of code while exploring the data before I finalized and cleaned it up. I left two files in the repo. They are not used in the final program, but they show part of how I programmatically investigated the data and I thought they were worth leaving. They are not written as well or as clean as main.py.
+I wrote several iterations of code while exploring the data before I finalized and cleaned it up. I left two files in the repo. They are not used in the final program, but they show part of how I programmatically investigated the data and I thought they were worth leaving. They are not written as well or as clean as main.py, and will not function correctly in the `eda/` directory.
 ```
-src/find_ein.py
-src/unique_urls.py
+src/eda/find_ein.py
+src/eda/unique_urls.py
 ```
