@@ -8,7 +8,7 @@ On your system, install python 3.9+. Other versions of Python 3 will likely work
 
 Then, in a terminal:
 ```
-git pull <repo>
+git clone git@github.com:Meadosc/Fires-Htlaeh-Emohekat-Weivretni.git
 ```
 
 At this point, you need to download the [source data](https://antm-pt-prod-dataz-nogbd-nophi-us-east1.s3.amazonaws.com/anthem/2024-09-01_anthem_index.json.gz).
@@ -17,14 +17,15 @@ Once the source data is downloaded, move it into the `src/data/` directory. Do n
 
 Then:
 ```
-cd <repo>
+cd Fires-Htlaeh-Emohekat-Weivretni/
+python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cd src/
-python -b main.py
+python -B main.py
 ```
 
-The code should run for ~2.5 minutes, and then write a file with the urls in `src/data/output.json`.
+The code should run for ~2.5 minutes, and then write a file with the urls in `src/data/output.json`. I have copied my url results to `src/final_output.json` for the ease of the reader.
 
 
 
@@ -78,7 +79,7 @@ I then had to deal with outliers. There are 4 urls that are used for vision and 
 ```
 There appears to be a single nationwide vision plan, and three dental plans. The dental plans appear to be for the nation, and then a single file for Maine and a single file for New Hampshire, which is deduced from their two state abbreviation being in the url. I did some searching for why those two stated may be exceptions for the nationwide dental plan, but I couldn't find anything decisive. It seems reasonable to assume New York is under the general dental plan, but I'm less than perfectly confident in this interpretation and would prefer to research more, but I chose to move on to stay within the allotted time.
 
-Finally, there are some strange outliers that I investigated manually. Here are some abbreviated examples:
+Finally, there are some strange outliers that I investigated manually:
 ```
 "https://mrf.beaconhealthoptions.com/files/BEACON_CHEVRON-CORPORATION_in-network-rates.zip",
 "https://100112941.mrfcentral.com/",
@@ -89,7 +90,7 @@ Finally, there are some strange outliers that I investigated manually. Here are 
 "https://mrf.beaconhealthoptions.com/files/BEACON_ANTHEM-DBA-UNICARE-COMM_in-network-rates.zip",
 "https://mrf.beaconhealthoptions.com/files/BEACON_EMPL-HLTH-PL-SUFF-CTY_in-network-rates.zip"
 ```
-It appears that mrfcentral is a url for Boyd Gaming, which operates out of Nevada, and the other urls are for Beacon, which was acquired by Anthem. Each Beacon url names the organization it is serving, so I investigated each organization and decided if it likely operated in New York or not. I must admit, I'm not sure if this was a reasonable methodology or not, as exceptions seem to be common when looking at healthcare providers. I can safely say that Chevron, UPS, and the good folk of Suffolk County probably operate in New York, but I excluded PG&E and the Commonwealth of Massachussetts, which seems reasonable, but perhaps they have remote employees in NY? Perhaps that doesn't matter? We're reaching the limit of my knowledge on healthcare and the needs of the theoretical customer. I assume this is an area I would need to ramp up on. And of course, given the time constraints, I needed to make a judgement call on the data given the information I had on hand.
+It appears that `mrfcentral` is a url for Boyd Gaming, which operates out of Nevada, and the other urls are for Beacon, which was acquired by Anthem. Each Beacon url names the organization it is serving, so I investigated each organization and decided if it likely operated in New York or not. I must admit, I'm not sure if this was a reasonable methodology or not, as exceptions seem to be common when looking at healthcare providers. I can safely say that Chevron, UPS, and the good folk of Suffolk County probably operate in New York, but I excluded PG&E and the Commonwealth of Massachussetts, which seems reasonable, but perhaps they have remote employees in NY? Perhaps that doesn't matter? We're reaching the limit of my knowledge on healthcare and the needs of the theoretical customer. I assume this is an area I would need to ramp up on. And of course, given the time constraints, I needed to make a judgement call on the data given the information I had on hand.
 
 
 ## Final Thoughts
